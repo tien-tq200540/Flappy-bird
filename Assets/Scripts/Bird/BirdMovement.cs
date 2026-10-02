@@ -13,7 +13,7 @@ public class BirdMovement : TienMonoBehaviour
 
     private void Update()
     {
-        if (Mouse.current.leftButton.wasReleasedThisFrame)
+        if (Mouse.current.leftButton.wasReleasedThisFrame || Keyboard.current.spaceKey.wasReleasedThisFrame)
         {
             birdRigidbody2D.velocity = Vector2.zero;
             birdRigidbody2D.AddForce(force * Vector2.up, ForceMode2D.Impulse);
