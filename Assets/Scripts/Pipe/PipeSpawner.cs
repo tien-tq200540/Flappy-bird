@@ -1,23 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PipeSpawner : TienMonoBehaviour
+public class PipeSpawner : Spawner
 {
-    [SerializeField] protected Transform prefab;
-    protected float xPos = 10f;
-    protected float minY = -3f;
-    protected float maxY = 3f;
-    protected float spawnTime = 1f;
+    private static PipeSpawner instance;
+    public static PipeSpawner Instance => instance;
+
+    protected override void Awake()
+    {
+        if (instance != null) Debug.LogError("Only 1 PipeSpawner allows to exist!");
+        else instance = this;
+        base.Awake();
+    }
+
+    [SerializeField] protected float xPos = 10f;
+    [SerializeField] protected float minY = -3f;
+    [SerializeField] protected float maxY = 3f;
+    [SerializeField] protected float spawnTime = 1f;
 
     private void Start()
     {
-        InvokeRepeating(nameof(Spawn), spawnTime, spawnTime);
+        InvokeRepeating(nameof(SpawnPipe), spawnTime, spawnTime);
     }
-    
-    protected virtual void Spawn()
+
+    public virtual void SpawnPipe()
     {
-        Instantiate(prefab);
-        prefab.SetPositionAndRotation(new Vector3(xPos, Random.Range(minY, maxY), 0f), Quaternion.identity);
+        this.Spawn("Pipe", new Vector3(xPos, Random.Range(minY, maxY), 0f));
     }
 }
