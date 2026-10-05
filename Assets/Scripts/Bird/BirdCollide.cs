@@ -16,6 +16,9 @@ public class BirdCollide : TienMonoBehaviour
         {
             transform.parent.gameObject.SetActive(false);
             Time.timeScale = 0f;
+        } else if (collision.TryGetComponent(out PipeScoreZone pipeScoreZone))
+        {
+            ScoreManager.Instance.AddScore(pipeScoreZone.Score);
         }
     }
 }

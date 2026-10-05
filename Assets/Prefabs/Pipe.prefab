@@ -291,6 +291,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5478043938481146984}
+  - component: {fileID: 3538136455330654538}
+  - component: {fileID: 8981846300471945879}
   m_Layer: 0
   m_Name: ScoreZone
   m_TagString: Untagged
@@ -313,6 +315,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1484779051786405666}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &3538136455330654538
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5644583897442595337}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 2}
+  m_EdgeRadius: 0
+--- !u!114 &8981846300471945879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5644583897442595337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91846eedb8f32624d9478fc0c5bbdfe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 1
 --- !u!1 &6574534164129180873
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,3 +553,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093fe157b04b2284c8395bb30e93ad00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeLimit: 5
+  timeElapsed: 0
