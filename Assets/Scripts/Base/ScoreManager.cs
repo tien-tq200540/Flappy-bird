@@ -33,10 +33,17 @@ public class ScoreManager : TienMonoBehaviour
         ScoreUICtrl.Instance.UpdateScoreUI(curScore);
     }
 
+    private void AddTestScore()
+    {
+        AddScore(1);
+    }
+
     protected virtual void LoadDefaultValue()
     {
-        curScore = 0;
+        curScore = 96;
         highScore = 0;
         maxScore = 9999;
+        AddScore(0);
+        InvokeRepeating(nameof(AddTestScore), 2f, 2f);
     }
 }

@@ -199,6 +199,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65158224a62453a4b850a9eb9ee357da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numbersSprites:
+  - {fileID: 21300000, guid: 6a1bdc4011b48574b9e7979e7087dae8, type: 3}
+  - {fileID: 21300000, guid: 7b9b3551014f6c6429c39df2475d63ec, type: 3}
+  - {fileID: 21300000, guid: 856fbb8f9eda9c54aa026a6a28aa83e2, type: 3}
+  - {fileID: 21300000, guid: 46c308d84040a2f48aa1d9d73907671e, type: 3}
+  - {fileID: 21300000, guid: 721ca7e0987ad1942b5a0788aff04dbf, type: 3}
+  - {fileID: 21300000, guid: c3df6ee583efbde4e8d5becb14d3e231, type: 3}
+  - {fileID: 21300000, guid: 3f7d7dc1fb8628a449bd481220b410bd, type: 3}
+  - {fileID: 21300000, guid: 9a7751428b061ce40b3a3ed9ead02ffd, type: 3}
+  - {fileID: 21300000, guid: 8a6652ab8f7ce98429e53c1262ce1937, type: 3}
+  - {fileID: 21300000, guid: bdbd548e77aac564890339480a1ce3f9, type: 3}
+  scoreCharacters: 00000000000000000000000000000000
+  scoreCharacterImageObjs:
+  - {fileID: 363144718}
+  - {fileID: 1930327684}
+  - {fileID: 1281871607}
+  - {fileID: 731340371}
 --- !u!1 &363144716
 GameObject:
   m_ObjectHideFlags: 0
