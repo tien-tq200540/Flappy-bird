@@ -28,7 +28,11 @@ public class ScoreManager : TienMonoBehaviour
 
         curScore += addScore;
         if (curScore > maxScore) curScore = maxScore;
-        if (curScore > highScore) highScore = curScore;
+        if (curScore > highScore)
+        {
+            highScore = curScore;
+            SaveSystemUtilities.SaveHighScore(highScore);
+        }
 
         ScoreUICtrl.Instance.UpdateScoreUI(curScore);
     }
@@ -41,7 +45,7 @@ public class ScoreManager : TienMonoBehaviour
     protected virtual void LoadDefaultValue()
     {
         curScore = 96;
-        highScore = 0;
+        highScore = SaveSystemUtilities.LoadHighScore();
         maxScore = 9999;
         AddScore(0);
         InvokeRepeating(nameof(AddTestScore), 2f, 2f);
