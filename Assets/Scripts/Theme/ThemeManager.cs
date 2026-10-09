@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +19,7 @@ public class ThemeManager : TienMonoBehaviour
 
     private void OnEnable()
     {
-        LoadCurThemeByTime();
+        LoadTodayTheme();
     }
 
     protected virtual void LoadBase()
@@ -39,38 +38,37 @@ public class ThemeManager : TienMonoBehaviour
 
     protected virtual void SetTheme(ThemeSO themeSO)
     {
-        this.background.sprite = themeSO.background;
-        this.baseGround.sprite = themeSO.baseGround;
+        background.sprite = themeSO.background;
+        baseGround.sprite = themeSO.baseGround;
     }
 
-    protected virtual void LoadCurThemeByTime()
+    protected virtual void LoadTodayTheme()
     {
         if (themeLists.Count == 0) return;
-
-        ThemeType curThemeType = FindTargetThemeType();
-        foreach (var theme in themeLists)
-        {
-            if (theme.type == curThemeType)
-            {
-                curTheme = theme;
-                break;
-            }
-        }
-
+        curTheme = FindTodayTheme();
         if (curTheme != null) SetTheme(curTheme);
         else Debug.LogWarning($"{transform.name}: No theme found!", this);
     }
 
-    protected virtual ThemeType FindTargetThemeType()
+    protected virtual ThemeSO FindTodayTheme()
     {
         DateTime now = DateTime.Now;
 
-        //special theme
-        if (now.Day == 31 && now.Month == 10) return ThemeType.Halloween;
+        //if it's a special day
+        foreach (var theme in themeLists)
+        {
+            if (theme.days.Contains(now.Day) && theme.months.Contains(now.Month)) return theme;
+        }
 
-        //default theme
+        //if it's a normal day
         int curHour = now.Hour;
-        if (6 <= curHour && curHour < 18) return ThemeType.Day;
-        else return ThemeType.Night;
+        foreach (var theme in themeLists)
+        {
+            if ((theme.type == ThemeType.Day && IsDay(curHour)) || (theme.type == ThemeType.Night && !IsDay(curHour))) return theme;
+        }
+
+        return null;
     }
+
+    protected virtual bool IsDay(int hour) => 6 <= hour && hour < 18;
 }

@@ -16,9 +16,8 @@ public class ScoreManager : TienMonoBehaviour
         base.Awake();
     }
 
-    protected override void LoadComponents()
+    private void OnEnable()
     {
-        base.LoadComponents();
         LoadDefaultValue();
     }
 
@@ -37,17 +36,11 @@ public class ScoreManager : TienMonoBehaviour
         ScoreUICtrl.Instance.UpdateScoreUI(curScore);
     }
 
-    private void AddTestScore()
-    {
-        AddScore(1);
-    }
-
     protected virtual void LoadDefaultValue()
     {
-        curScore = 96;
+        curScore = 0;
         highScore = SaveSystemUtilities.LoadHighScore();
         maxScore = 9999;
         AddScore(0);
-        InvokeRepeating(nameof(AddTestScore), 2f, 2f);
     }
 }

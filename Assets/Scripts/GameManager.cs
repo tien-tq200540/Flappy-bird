@@ -15,12 +15,12 @@ public class GameManager : TienMonoBehaviour
 
     public virtual void BackToHome()
     {
-        SceneManager.LoadScene("Home");
+        Debug.Log("Back To Home");
     }
 
     public virtual void RestartGame()
     {
-        ResumeGame();
+        UnpauseGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -35,8 +35,13 @@ public class GameManager : TienMonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public virtual void ResumeGame()
+    public virtual void UnpauseGame()
     {
         Time.timeScale = 1f;
+    }
+
+    public virtual void Play()
+    {
+
     }
 }

@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 21300000, guid: ca0d23758669ed14a9baf2e8cfa394e4, type: 3}
   baseGround: {fileID: 162337211, guid: 4d40f2f8a6ce130498b17ae25caed5c2, type: 3}
+  days: 1f000000
+  months: 0a000000
   type: 2
