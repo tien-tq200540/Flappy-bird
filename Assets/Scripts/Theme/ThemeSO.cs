@@ -6,7 +6,8 @@ public class ThemeSO : ScriptableObject
 {
     public Sprite background;
     public Sprite baseGround;
-    public List<int> days = new();
-    public List<int> months = new();
+    
+    [Range(1, 31)] public List<int> days = new();
+    [Range(1, 12)] public List<int> months = new();
     public ThemeType type;
 }

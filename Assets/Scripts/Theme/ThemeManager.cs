@@ -38,8 +38,8 @@ public class ThemeManager : TienMonoBehaviour
 
     protected virtual void SetTheme(ThemeSO themeSO)
     {
-        background.sprite = themeSO.background;
-        baseGround.sprite = themeSO.baseGround;
+        if (background != null) background.sprite = themeSO.background;
+        if (baseGround != null) baseGround.sprite = themeSO.baseGround;
     }
 
     protected virtual void LoadTodayTheme()
