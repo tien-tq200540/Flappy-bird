@@ -10,6 +10,12 @@ public class ThemeManager : TienMonoBehaviour
     [SerializeField] protected List<ThemeSO> themeLists = new();
     [SerializeField] protected ThemeSO curTheme;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(this);
+    }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();

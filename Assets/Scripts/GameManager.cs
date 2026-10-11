@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : TienMonoBehaviour
 {
@@ -9,19 +8,20 @@ public class GameManager : TienMonoBehaviour
     protected override void Awake()
     {
         if (instance != null) Debug.LogError("Only 1 GameManager allows to exist!");
-        else instance = this; 
+        else instance = this;
+        DontDestroyOnLoad(this);
         base.Awake();
     }
 
     public virtual void BackToHome()
     {
-        Debug.Log("Back To Home");
+        SceneLoader.LoadScene(Scene.Home);
     }
 
     public virtual void RestartGame()
     {
         UnpauseGame();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneLoader.LoadScene(Scene.Game);
     }
 
     public virtual void GameOver()
@@ -40,7 +40,12 @@ public class GameManager : TienMonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public virtual void Play()
+    public virtual void PlayGame()
+    {
+        SceneLoader.LoadScene(Scene.Game);
+    }
+
+    public virtual void LoadHighscore()
     {
 
     }
