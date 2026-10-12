@@ -49,4 +49,9 @@ public class GameManager : TienMonoBehaviour
     {
 
     }
+
+    public virtual void TogglePause()
+    {
+        Time.timeScale = 1f - Time.timeScale;
+    }
 }

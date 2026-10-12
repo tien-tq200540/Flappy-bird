@@ -6,7 +6,6 @@ public class MenuUICtrl : TienMonoBehaviour
     [SerializeField] protected Button playButton;
     [SerializeField] protected Button highScoreButton;
     protected Color pressedColor = Color.yellow;
-    protected Color selectedColor = Color.yellow;
 
     protected override void LoadComponents()
     {
@@ -42,7 +41,6 @@ public class MenuUICtrl : TienMonoBehaviour
         playButton = transform.Find("PlayButton").GetComponent<Button>();
         ColorBlock playButtonColor = playButton.colors;
         playButtonColor.pressedColor = pressedColor;
-        playButtonColor.selectedColor = selectedColor;
         playButton.colors = playButtonColor;
         Debug.Log($"{transform.name}: LoadPlayButton", this);
     }
@@ -53,7 +51,6 @@ public class MenuUICtrl : TienMonoBehaviour
         highScoreButton = transform.Find("HighscoreButton").GetComponent<Button>();
         ColorBlock highScoreColor = highScoreButton.colors;
         highScoreColor.pressedColor = pressedColor;
-        highScoreColor.selectedColor = selectedColor;
         highScoreButton.colors = highScoreColor;
         Debug.Log($"{transform.name}: LoadHighScoreButton", this);
     }
