@@ -17,6 +17,7 @@ public class PauseButtonCtrl : TienMonoBehaviour
     {
         if (pauseUnpauseButton != null) return;
         pauseUnpauseButton = GetComponent<Button>();
+        pauseUnpauseButton.image.sprite = pauseButtonIcon; //default sprite
         Debug.Log($"{transform.name}: LoadPauseButton", this);
     }
 
