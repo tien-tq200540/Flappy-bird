@@ -9,7 +9,7 @@ public class MusicManager : TienMonoBehaviour
     public static MusicManager Instance => instance;
 
     [SerializeField] protected AudioSource audioSource;
-    [SerializeField] protected AudioClip demoAudioClip;
+    [SerializeField] protected Dictionary<AudioClipName, AudioClip> audiosList = new();
 
     protected override void Awake()
     {
@@ -23,12 +23,33 @@ public class MusicManager : TienMonoBehaviour
     protected override void LoadComponents()
     {
         LoadAudioSource();
+        LoadAudiosList();
+    }
+
+    protected virtual void LoadAudiosList()
+    {
+        audiosList.Clear();
+        AudioClip[] sources = Resources.LoadAll<AudioClip>("Audio");
+
+        foreach (AudioClip clip in sources)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                AudioClipName audioClipName = (AudioClipName)i;
+                if (clip.name == audioClipName.ToString())
+                {
+                    audiosList.Add(audioClipName, clip);
+                    break;
+                }
+            }
+        }
+        Debug.Log($"{transform.name}: LoadAudiosList", this);
     }
 
     private void Start()
     {
         //testing
-        Invoke(nameof(this.PlayClipTest), 10f);
+        Invoke(nameof(this.PlayClipTest), 5f);
     }
 
     protected virtual void LoadAudioSource()
@@ -40,15 +61,15 @@ public class MusicManager : TienMonoBehaviour
 
     protected virtual void PlayClipTest()
     {
-        PlayAudioClip(demoAudioClip);
+        PlayAudioClip(AudioClipName.Point);
     }
 
-    protected virtual void PlayAudioClip(AudioClip audioClip)
+    protected virtual void PlayAudioClip(AudioClipName audioClipName)
     {
-        audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(audiosList[audioClipName]);
         //audioSource.clip = audioClip;
         //audioSource.Play();
-        Debug.Log($"Play {audioClip.name}");
+        Debug.Log($"Play {audioClipName.ToString()}");
         
     }
 }
