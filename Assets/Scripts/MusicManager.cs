@@ -46,12 +46,6 @@ public class MusicManager : TienMonoBehaviour
         Debug.Log($"{transform.name}: LoadAudiosList", this);
     }
 
-    private void Start()
-    {
-        //testing
-        Invoke(nameof(this.PlayClipTest), 5f);
-    }
-
     protected virtual void LoadAudioSource()
     {
         if (audioSource != null) return;
@@ -59,17 +53,8 @@ public class MusicManager : TienMonoBehaviour
         Debug.Log($"{transform.name}: LoadAudioSource", this);
     }
 
-    protected virtual void PlayClipTest()
-    {
-        PlayAudioClip(AudioClipName.Point);
-    }
-
-    protected virtual void PlayAudioClip(AudioClipName audioClipName)
+    public virtual void PlayAudioClip(AudioClipName audioClipName)
     {
         audioSource.PlayOneShot(audiosList[audioClipName]);
-        //audioSource.clip = audioClip;
-        //audioSource.Play();
-        Debug.Log($"Play {audioClipName.ToString()}");
-        
     }
 }

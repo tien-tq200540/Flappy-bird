@@ -8,9 +8,11 @@ public class BirdCollide : TienMonoBehaviour
         {
             transform.parent.gameObject.SetActive(false);
             GameManager.Instance.GameOver();
+            MusicManager.Instance.PlayAudioClip(AudioClipName.Die);
         } else if (collision.TryGetComponent(out PipeScoreZone pipeScoreZone))
         {
             ScoreManager.Instance.AddScore(pipeScoreZone.Score);
+            MusicManager.Instance.PlayAudioClip(AudioClipName.Point);
         }
     }
 }

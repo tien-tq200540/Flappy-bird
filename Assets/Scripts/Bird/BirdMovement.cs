@@ -17,6 +17,7 @@ public class BirdMovement : TienMonoBehaviour
         {
             birdRigidbody2D.velocity = Vector2.zero;
             birdRigidbody2D.AddForce(force * Vector2.up, ForceMode2D.Impulse);
+            MusicManager.Instance.PlayAudioClip(AudioClipName.Wing);
         }
     }
 
