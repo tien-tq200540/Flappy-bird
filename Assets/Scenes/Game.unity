@@ -2103,7 +2103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 312dad32c6af9604e8e84dc19b630421, type: 2}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2133,7 +2133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6728a3ac77d6ba48b3da4769eaaf8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseUnpauseButton: {fileID: 0}
+  pauseUnpauseButton: {fileID: 2121284598}
   pauseButtonIcon: {fileID: 21300000, guid: 312dad32c6af9604e8e84dc19b630421, type: 2}
   unpauseButtonIcon: {fileID: 21300000, guid: 30c45506e400d01429c6e08a2d0d3a22, type: 2}
 --- !u!1 &2128349768

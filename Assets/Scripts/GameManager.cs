@@ -15,12 +15,14 @@ public class GameManager : TienMonoBehaviour
 
     public virtual void BackToHome()
     {
+        PauseUnpauseButtonCtrl.Instance.gameObject.SetActive(true);
         SceneLoader.LoadScene(Scene.Home);
     }
 
     public virtual void RestartGame()
     {
         UnpauseGame();
+        PauseUnpauseButtonCtrl.Instance.gameObject.SetActive(true);
         SceneLoader.LoadScene(Scene.Game);
     }
 
@@ -28,6 +30,7 @@ public class GameManager : TienMonoBehaviour
     {
         PauseGame();
         GameOverUICtrl.Instance.SetGameOverUIState(true);
+        PauseUnpauseButtonCtrl.Instance.gameObject.SetActive(false);
     }
 
     public virtual void PauseGame()
