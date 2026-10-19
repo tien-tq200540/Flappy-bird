@@ -5,18 +5,26 @@ public class GameManager : TienMonoBehaviour
     private static GameManager instance;
     public static GameManager Instance => instance;
 
+    protected static bool isBooting = true;
+
     protected override void Awake()
     {
         if (instance != null) Debug.LogError("Only 1 GameManager allows to exist!");
         else instance = this;
         DontDestroyOnLoad(this);
         base.Awake();
+        if (isBooting)
+        {
+            SceneLoader.LoadScene(Scene.Menu);
+            isBooting = false;
+        }
     }
 
     public virtual void BackToHome()
     {
+        UnpauseGame();
         PauseUnpauseButtonCtrl.Instance.gameObject.SetActive(true);
-        SceneLoader.LoadScene(Scene.Home);
+        SceneLoader.LoadScene(Scene.Menu);
     }
 
     public virtual void RestartGame()

@@ -2,7 +2,7 @@ using UnityEngine.SceneManagement;
 
 public enum Scene
 {
-    Home,
+    Menu,
     Game
 }
 
