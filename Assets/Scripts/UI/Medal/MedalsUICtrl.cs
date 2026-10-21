@@ -44,15 +44,9 @@ public class MedalsUICtrl : TienMonoBehaviour
     protected virtual void LoadMedalSprites()
     {
         if (medalsList.Count != 0) return;
-        medalsList.Clear();
         MedalSO[] sources = Resources.LoadAll<MedalSO>("SO/Medals");
-        foreach (var sprite in sources)
-        {
-            medalsList.Add(sprite);
-        }
-
+        medalsList.AddRange(sources);
         medalsList.Sort((x, y) => y.minPointThreshold.CompareTo(x.minPointThreshold));
-
         Debug.Log($"{transform.name}: LoadMedalSprites", this);
     }
 }
