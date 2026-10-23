@@ -20,31 +20,28 @@ public class ScoreConvertToSprites : TienMonoBehaviour
     protected virtual void LoadNumberSprites()
     {
         if (numbersSprites.Count != 0) return;
-        numbersSprites.Clear();
         Sprite[] source = Resources.LoadAll<Sprite>("number");
-        foreach (var sprite in source)
-        {
-            numbersSprites.Add(sprite);
-        }
+        numbersSprites.AddRange(source);
         Debug.Log($"{transform.name}: LoadNumberSprites", this);
     }
 
     protected virtual void LoadScoreCharacterImageObjs()
     {
-        scoreCharacterImageObjs.Clear();
+        if (scoreCharacterImageObjs.Count != 0) return;
         foreach (Transform child in transform)
         {
             scoreCharacterImageObjs.Add(child.GetComponent<Image>());
-        }
-
-        foreach (var child in scoreCharacterImageObjs)
-        {
-            child.gameObject.SetActive(false);
         }
     }
 
     public virtual void UpdateScoreUI(int curScore)
     {
+        if (curScore == 0)
+        {
+            scoreCharacterImageObjs[scoreCharacters.Length - 1].gameObject.SetActive(true);
+            scoreCharacterImageObjs[scoreCharacters.Length - 1].sprite = numbersSprites[curScore];
+            return;
+        }
 
         for (int i = scoreCharacters.Length - 1; i >= 0; i--)
         {

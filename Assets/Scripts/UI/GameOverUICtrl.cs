@@ -5,7 +5,6 @@ public class GameOverUICtrl : TienMonoBehaviour
 {
     [SerializeField] protected GameObject background;
     [SerializeField] protected GameObject tittle;
-    [SerializeField] protected Button restartButton;
     [SerializeField] protected Button homeButton;
 
     private static GameOverUICtrl instance;
@@ -23,7 +22,6 @@ public class GameOverUICtrl : TienMonoBehaviour
         base.LoadComponents();
         LoadBackGround();
         LoadTittle();
-        LoadRestartButton();
         LoadHomeButton();
         SetGameOverUIState(false);
     }
@@ -32,7 +30,6 @@ public class GameOverUICtrl : TienMonoBehaviour
     {
         if (background != null) background.SetActive(state);
         if (tittle  != null) tittle.SetActive(state);
-        if (restartButton != null) restartButton.gameObject.SetActive(state);
         if (homeButton != null) homeButton.gameObject.SetActive(state);
     }
 
@@ -57,22 +54,13 @@ public class GameOverUICtrl : TienMonoBehaviour
         Debug.Log($"{transform.name}: LoadHomeButton", this);
     }
 
-    protected virtual void LoadRestartButton()
-    {
-        if (restartButton != null) return;
-        restartButton = transform.Find("RestartButton").GetComponent<Button>();
-        Debug.Log($"{transform.name}: LoadRestartButton", this);
-    }
-
     private void OnEnable()
     {
-        restartButton.onClick.AddListener(OnRestartButtonClick);
         homeButton.onClick.AddListener(OnHomeButtonClick);
     }
 
     private void OnDisable()
     {
-        restartButton.onClick.RemoveListener(OnRestartButtonClick);
         homeButton.onClick.RemoveListener(OnHomeButtonClick);
     }
 

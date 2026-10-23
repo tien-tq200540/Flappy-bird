@@ -41,6 +41,6 @@ public class ScoreManager : TienMonoBehaviour
         curScore = 0;
         highScore = SaveSystemUtilities.LoadHighScore();
         maxScore = 9999;
-        AddScore(0);
+        AddScore(curScore);
     }
 }
