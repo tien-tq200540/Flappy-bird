@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BirdCollide : TienMonoBehaviour
@@ -6,8 +7,8 @@ public class BirdCollide : TienMonoBehaviour
     {
         if (collision.TryGetComponent(out PipeCollider pipeCollider))
         {
+            EventManager.TriggerPlayerDeath(this, EventArgs.Empty);
             transform.parent.gameObject.SetActive(false);
-            GameManager.Instance.GameOver();
             MusicManager.Instance.PlayAudioClip(AudioClipName.Die);
         } else if (collision.TryGetComponent(out PipeScoreZone pipeScoreZone))
         {

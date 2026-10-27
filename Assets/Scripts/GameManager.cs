@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : TienMonoBehaviour
@@ -20,6 +21,16 @@ public class GameManager : TienMonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        EventManager.OnPlayerDeath += GameOver;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnPlayerDeath -= GameOver;
+    }
+
     public virtual void BackToHome()
     {
         UnpauseGame();
@@ -34,7 +45,7 @@ public class GameManager : TienMonoBehaviour
         SceneLoader.LoadScene(Scene.Game);
     }
 
-    public virtual void GameOver()
+    protected virtual void GameOver(object sender, EventArgs eventArgs)
     {
         PauseGame();
         GameOverUICtrl.Instance.SetGameOverUIState(true);
