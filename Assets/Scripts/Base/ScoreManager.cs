@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ScoreManager : TienMonoBehaviour
@@ -19,13 +20,14 @@ public class ScoreManager : TienMonoBehaviour
     private void OnEnable()
     {
         LoadDefaultValue();
+        EventManager.OnPlayerGetScore += AddScore;
     }
 
-    public virtual void AddScore(int addScore)
+    public virtual void AddScore(object sender, PlayerGetScoreEventArgs e)
     {
         if (curScore >= maxScore) return;
 
-        curScore += addScore;
+        curScore += e.Score;
         if (curScore > maxScore) curScore = maxScore;
         if (curScore > highScore)
         {
@@ -41,6 +43,5 @@ public class ScoreManager : TienMonoBehaviour
         curScore = 0;
         highScore = SaveSystemUtilities.LoadHighScore();
         maxScore = 9999;
-        AddScore(curScore);
     }
 }

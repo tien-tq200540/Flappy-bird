@@ -12,7 +12,7 @@ public class BirdCollide : TienMonoBehaviour
             MusicManager.Instance.PlayAudioClip(AudioClipName.Die);
         } else if (collision.TryGetComponent(out PipeScoreZone pipeScoreZone))
         {
-            ScoreManager.Instance.AddScore(pipeScoreZone.Score);
+            EventManager.TriggerPlayerGetScore(this, new PlayerGetScoreEventArgs(pipeScoreZone.Score));
             MusicManager.Instance.PlayAudioClip(AudioClipName.Point);
         }
     }

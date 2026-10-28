@@ -7,4 +7,10 @@ public static class EventManager
     {
         OnPlayerDeath?.Invoke(sender, e);
     }
+
+    public static event EventHandler<PlayerGetScoreEventArgs> OnPlayerGetScore;
+    public static void TriggerPlayerGetScore(object sender, PlayerGetScoreEventArgs e)
+    {
+        OnPlayerGetScore?.Invoke(sender, e);
+    }
 }
