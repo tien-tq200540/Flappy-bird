@@ -11,4 +11,19 @@ public class ScoreUICtrl : ScoreConvertToSprites
         else instance = this;
         base.Awake();
     }
+
+    private void OnEnable()
+    {
+        EventManager.OnUpdateScoreUIInGame += OnUpdateScoreUIInGame;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnUpdateScoreUIInGame -= OnUpdateScoreUIInGame;
+    }
+
+    protected virtual void OnUpdateScoreUIInGame(object sender, UpdateScoreUIInGameEventArgs e)
+    {
+        this.UpdateScoreUI(e.CurScore);   
+    }
 }

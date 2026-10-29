@@ -13,4 +13,10 @@ public static class EventManager
     {
         OnPlayerGetScore?.Invoke(sender, e);
     }
+
+    public static event EventHandler<UpdateScoreUIInGameEventArgs> OnUpdateScoreUIInGame;
+    public static void TriggerUpdateScoreUIInGame(object sender, UpdateScoreUIInGameEventArgs e)
+    {
+        OnUpdateScoreUIInGame?.Invoke(sender, e);
+    }
 }
