@@ -2,24 +2,14 @@ using UnityEngine;
 
 public class ScoreManager : TienMonoBehaviour
 {
-    private static ScoreManager instance;
-    public static ScoreManager Instance => instance;
-
     [SerializeField] protected int curScore;
     [SerializeField] protected int highScore;
     [SerializeField] protected int maxScore;
 
-    protected override void Awake()
-    {
-        if (instance != null) Debug.LogError("Only 1 ScoreManager allows to exists!");
-        else instance = this;
-        base.Awake();
-    }
-
     private void OnEnable()
     {
-        LoadDefaultValue();
         EventManager.OnPlayerGetScore += AddScore;
+        LoadDefaultValue();
     }
 
     private void OnDisable()
@@ -40,7 +30,6 @@ public class ScoreManager : TienMonoBehaviour
         }
 
         EventManager.TriggerUpdateScoreUIInGame(this, new UpdateScoreUIInGameEventArgs(curScore));
-        //ScoreUICtrl.Instance.UpdateScoreUI(curScore);
     }
 
     protected virtual void LoadDefaultValue()
