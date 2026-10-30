@@ -17,6 +17,14 @@ public class PipeSpawner : Spawner
     [SerializeField] protected float maxY = 3f;
     [SerializeField] protected float spawnTime = 1f;
 
+    protected override void LoadPrefabs()
+    {
+        if (prefabs.Count > 0) return;
+        Transform[] source = Resources.LoadAll<Transform>("Prefabs/Pipe");
+        prefabs.AddRange(source);
+        Debug.Log($"{transform.name}: LoadPrefabs", this);
+    }
+
     private void Start()
     {
         InvokeRepeating(nameof(SpawnPipe), spawnTime, spawnTime);

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : TienMonoBehaviour
+public abstract class Spawner : TienMonoBehaviour
 {
     [SerializeField] protected List<Transform> prefabs = new();
     [SerializeField] protected List<Transform> poolObjs = new();
@@ -9,6 +9,7 @@ public class Spawner : TienMonoBehaviour
 
     protected override void LoadComponents()
     {
+        LoadPrefabs();
         LoadHolder();
     }
 
@@ -60,6 +61,8 @@ public class Spawner : TienMonoBehaviour
         poolObjs.Add(obj);
         obj.gameObject.SetActive(false);
     }
+
+    protected abstract void LoadPrefabs();
 
     protected virtual void LoadHolder()
     {

@@ -1009,7 +1009,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 1484779051786405666, guid: 52186ea30bba82942ac1ddf6aed8851c, type: 3}
   poolObjs: []
-  holder: {fileID: 0}
+  holder: {fileID: 741550727}
   xPos: 10
   minY: -3
   maxY: 3
@@ -1445,7 +1445,7 @@ GameObject:
   - component: {fileID: 1872548213}
   - component: {fileID: 1872548214}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: BirdCollide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1513,6 +1513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d8ce1b70176ac047ab3856ab5c15996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isImmortal: 1
 --- !u!1 &1899921128
 GameObject:
   m_ObjectHideFlags: 0
