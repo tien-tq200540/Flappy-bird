@@ -9,12 +9,16 @@ public class ScoreManager : TienMonoBehaviour
     private void OnEnable()
     {
         EventManager.OnPlayerGetScore += AddScore;
-        LoadDefaultValue();
     }
 
     private void OnDisable()
     {
         EventManager.OnPlayerGetScore -= AddScore;
+    }
+
+    private void Start()
+    {
+        LoadDefaultValue();
     }
 
     protected virtual void AddScore(object sender, PlayerGetScoreEventArgs e)
