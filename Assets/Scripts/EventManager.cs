@@ -19,4 +19,16 @@ public static class EventManager
     {
         OnUpdateScoreUIInGame?.Invoke(sender, e);
     }
+
+    public static event EventHandler OnPlayerGetHurt;
+    public static void TriggerPlayerGetHurt(object sender, EventArgs e)
+    {
+        OnPlayerGetHurt?.Invoke(sender, e);
+    }
+
+    public static event EventHandler OnPlayerGetShield;
+    public static void TriggerPlayerGetShield( object sender, EventArgs e)
+    {
+        OnPlayerGetShield?.Invoke(sender, e);
+    }
 }
