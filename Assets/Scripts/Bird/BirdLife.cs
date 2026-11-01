@@ -36,13 +36,18 @@ public class BirdLife : TienMonoBehaviour
             life -= deductDefault;
             if (life == 0) EventManager.TriggerPlayerDeath(this, EventArgs.Empty);
         }
-        else shield -= deductDefault;
+        else
+        {
+            shield -= deductDefault;
+            EventManager.TriggerPlayerLoseShield(this, EventArgs.Empty);
+        }
     }
 
     protected virtual void AddShield(object sender, EventArgs e)
     {
         if (shield >= maxShield) return;
         shield++;
+        EventManager.TriggerPlayerGetShieldCompletely(sender, e);
     }
 
     protected virtual void Die(object sender, EventArgs e)

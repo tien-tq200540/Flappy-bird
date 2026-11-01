@@ -31,4 +31,16 @@ public static class EventManager
     {
         OnPlayerGetShield?.Invoke(sender, e);
     }
+
+    public static event EventHandler OnPlayerGetShieldCompletely;
+    public static void TriggerPlayerGetShieldCompletely(object sender, EventArgs e)
+    {
+        OnPlayerGetShieldCompletely?.Invoke(sender, e);
+    }
+
+    public static event EventHandler OnPlayerLoseShield;
+    public static void TriggerPlayerLoseShield(object sender, EventArgs e)
+    {
+        OnPlayerLoseShield?.Invoke(sender, e);
+    }
 }
