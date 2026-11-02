@@ -1155,6 +1155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 1484779051786405666, guid: 52186ea30bba82942ac1ddf6aed8851c, type: 3}
+  - {fileID: 7293138228928931379, guid: f95f5dcb5b650c84a9757ad1ce992704, type: 3}
   poolObjs: []
   holder: {fileID: 741550727}
   xPos: 10

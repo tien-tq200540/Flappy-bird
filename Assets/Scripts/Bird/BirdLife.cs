@@ -30,11 +30,12 @@ public class BirdLife : TienMonoBehaviour
 
     protected virtual void GetHurt(object sender, EventArgs e)
     {
-        if (isImmortal) return;
         if (shield == 0)
         {
             life -= deductDefault;
-            if (life == 0) EventManager.TriggerPlayerDeath(this, EventArgs.Empty);
+            //for testing
+            if (life == 0 && !isImmortal) EventManager.TriggerPlayerDeath(this, EventArgs.Empty);
+            else life = 99;
         }
         else
         {

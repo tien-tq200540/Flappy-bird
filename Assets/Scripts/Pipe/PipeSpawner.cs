@@ -16,6 +16,7 @@ public class PipeSpawner : Spawner
     [SerializeField] protected float minY = -3f;
     [SerializeField] protected float maxY = 3f;
     [SerializeField] protected float spawnTime = 1f;
+    protected Vector2 spawnPos = Vector2.zero;
 
     protected override void LoadPrefabs()
     {
@@ -32,6 +33,10 @@ public class PipeSpawner : Spawner
 
     public virtual void SpawnPipe()
     {
-        this.Spawn("Pipe", new Vector3(xPos, Random.Range(minY, maxY), 0f));
+        spawnPos.x = xPos;
+        spawnPos.y = Random.Range(minY, maxY);
+        int rate = Random.Range(0, 3); //test rating: 1/3
+        if (rate == 0) this.Spawn("PipeWithShield", spawnPos);
+        this.Spawn("Pipe", spawnPos);
     }
 }
