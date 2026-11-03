@@ -6,7 +6,6 @@ public class BirdLife : TienMonoBehaviour
     [SerializeField] protected int life;
     [SerializeField] protected int shield;
     [SerializeField] protected int maxShield;
-    [SerializeField] protected int deductDefault;
     [SerializeField] protected bool isImmortal = false;
 
     private void OnEnable()
@@ -28,19 +27,30 @@ public class BirdLife : TienMonoBehaviour
         LoadDefaultValue();
     }
 
-    protected virtual void GetHurt(object sender, EventArgs e)
+    protected virtual void GetHurt(object sender, PlayerGetHurtEventArgs e)
     {
         if (shield == 0)
         {
-            life -= deductDefault;
-            //for testing
-            if (life == 0 && !isImmortal) EventManager.TriggerPlayerDeath(this, EventArgs.Empty);
-            else life = 99;
-        }
-        else
+            life -= e.Damage;
+            if (life <= 0)
+            {
+                if (life == 0 && isImmortal) return;
+                life = 0;
+                EventManager.TriggerPlayerDeath(this, EventArgs.Empty);
+            }
+        } else
         {
-            shield -= deductDefault;
-            EventManager.TriggerPlayerLoseShield(this, EventArgs.Empty);
+            shield -= e.Damage;
+            if (shield < 0)
+            {
+                life = 0;
+                shield = 0;
+                EventManager.TriggerPlayerDeath(this, EventArgs.Empty);
+            } else
+            {
+                EventManager.TriggerPlayerLoseShield(this, EventArgs.Empty);
+                MusicManager.Instance.PlayAudioClip(AudioClipName.Hit);
+            }
         }
     }
 
@@ -62,6 +72,5 @@ public class BirdLife : TienMonoBehaviour
         life = 1;
         shield = 0;
         maxShield = 1;
-        deductDefault = 1;
     }
 }

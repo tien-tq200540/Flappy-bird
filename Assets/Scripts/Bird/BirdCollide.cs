@@ -5,9 +5,9 @@ public class BirdCollide : TienMonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PipeCollider pipeCollider))
+        if (collision.TryGetComponent(out HurtZone hurtZone))
         {
-            EventManager.TriggerPlayerGetHurt(this, EventArgs.Empty);
+            EventManager.TriggerPlayerGetHurt(this, new PlayerGetHurtEventArgs(hurtZone.Damage));
         } else if (collision.TryGetComponent(out Shield shield))
         {
             EventManager.TriggerPlayerGetShield(this, EventArgs.Empty);
