@@ -34,7 +34,6 @@ public class BirdLife : TienMonoBehaviour
             life -= e.Damage;
             if (life <= 0)
             {
-                if (life == 0 && isImmortal) return;
                 life = 0;
                 EventManager.TriggerPlayerDeath(this, EventArgs.Empty);
             }
@@ -63,6 +62,7 @@ public class BirdLife : TienMonoBehaviour
 
     protected virtual void Die(object sender, EventArgs e)
     {
+        if (isImmortal && shield >= 0) return;
         transform.parent.gameObject.SetActive(false);
         MusicManager.Instance.PlayAudioClip(AudioClipName.Die);
     }

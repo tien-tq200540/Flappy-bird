@@ -19,6 +19,9 @@ public class BirdMovement : TienMonoBehaviour
             birdRigidbody2D.AddForce(force * Vector2.up, ForceMode2D.Impulse);
             MusicManager.Instance.PlayAudioClip(AudioClipName.Wing);
         }
+
+        if (birdRigidbody2D.velocity.y >= 0) EventManager.TriggerPlayerModelChangeState(this, new PlayerModelChangeStateEventArgs(BirdModelCtrl.BirdModelState.Up));
+        else EventManager.TriggerPlayerModelChangeState(this, new PlayerModelChangeStateEventArgs(BirdModelCtrl.BirdModelState.Down));
     }
 
     protected virtual void LoadBirdRigidbody2D()

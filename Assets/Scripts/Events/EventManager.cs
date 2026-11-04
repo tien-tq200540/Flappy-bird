@@ -43,4 +43,10 @@ public static class EventManager
     {
         OnPlayerLoseShield?.Invoke(sender, e);
     }
+
+    public static EventHandler<PlayerModelChangeStateEventArgs> OnPlayerModelChangeState;
+    public static void TriggerPlayerModelChangeState(object sender, PlayerModelChangeStateEventArgs e)
+    {
+        OnPlayerModelChangeState?.Invoke(sender, e);
+    }
 }
