@@ -2,9 +2,19 @@ using UnityEngine;
 
 public class ScoreManager : TienMonoBehaviour
 {
+    private static ScoreManager instance;
+    public static ScoreManager Instance => instance;
+
     [SerializeField] protected int curScore;
+    public int CurScore => curScore;
     [SerializeField] protected int highScore;
     [SerializeField] protected int maxScore;
+
+    protected override void Awake()
+    {
+        if (instance != null) Debug.LogError("Only 1 ScoreManager allows to exists");
+        else instance = this;
+    }
 
     private void OnEnable()
     {

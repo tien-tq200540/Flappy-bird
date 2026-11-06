@@ -31,17 +31,15 @@ public class GameManager : TienMonoBehaviour
         EventManager.OnPlayerDeath -= GameOver;
     }
 
-    public virtual void BackToHome()
+    public virtual void BackToMenu()
     {
         UnpauseGame();
-        PauseUnpauseButtonCtrl.Instance.gameObject.SetActive(true);
         SceneLoader.LoadScene(Scene.Menu);
     }
 
     public virtual void RestartGame()
     {
         UnpauseGame();
-        PauseUnpauseButtonCtrl.Instance.gameObject.SetActive(true);
         SceneLoader.LoadScene(Scene.Game);
     }
 
@@ -49,15 +47,15 @@ public class GameManager : TienMonoBehaviour
     {
         PauseGame();
         GameOverUICtrl.Instance.SetGameOverUIState(true);
-        PauseUnpauseButtonCtrl.Instance.gameObject.SetActive(false);
+        PauseUnpauseButtonCtrl.Instance.HideSelf();
     }
 
-    public virtual void PauseGame()
+    protected virtual void PauseGame()
     {
         Time.timeScale = 0f;
     }
 
-    public virtual void UnpauseGame()
+    protected virtual void UnpauseGame()
     {
         Time.timeScale = 1f;
     }
@@ -65,11 +63,6 @@ public class GameManager : TienMonoBehaviour
     public virtual void PlayGame()
     {
         SceneLoader.LoadScene(Scene.Game);
-    }
-
-    public virtual void LoadHighscore()
-    {
-
     }
 
     public virtual void TogglePause()

@@ -1,4 +1,4 @@
-public class HighScoreMenuCtrl : ScoreConvertToSprites
+public class HighScoreInGameOverUICtrl : ScoreConvertToSprites
 {
     private void OnEnable()
     {

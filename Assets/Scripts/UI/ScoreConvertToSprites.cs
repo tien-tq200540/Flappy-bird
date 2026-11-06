@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +10,6 @@ public class ScoreConvertToSprites : TienMonoBehaviour
 
     protected override void LoadComponents()
     {
-        base.LoadComponents();
         LoadNumberSprites();
         LoadScoreCharacterImageObjs();
     }
@@ -36,6 +33,8 @@ public class ScoreConvertToSprites : TienMonoBehaviour
 
     public virtual void UpdateScoreUI(int curScore)
     {
+        foreach (var child in scoreCharacterImageObjs) child.gameObject.SetActive(false);
+
         if (curScore == 0)
         {
             scoreCharacterImageObjs[scoreCharacters.Length - 1].gameObject.SetActive(true);

@@ -5,7 +5,9 @@ public class GameOverUICtrl : TienMonoBehaviour
 {
     [SerializeField] protected GameObject background;
     [SerializeField] protected GameObject tittle;
-    [SerializeField] protected Button homeButton;
+    [SerializeField] protected Button okToRestartButton;
+    [SerializeField] protected Button menuButton;
+    [SerializeField] protected GameObject scoreInGameOverUI;
 
     private static GameOverUICtrl instance;
     public static GameOverUICtrl Instance => instance;
@@ -19,10 +21,11 @@ public class GameOverUICtrl : TienMonoBehaviour
 
     protected override void LoadComponents()
     {
-        base.LoadComponents();
         LoadBackGround();
         LoadTittle();
-        LoadHomeButton();
+        LoadOkToRestartButton();
+        LoadMenuButton();
+        LoadScoreInGameOverUI();
         SetGameOverUIState(false);
     }
 
@@ -30,7 +33,9 @@ public class GameOverUICtrl : TienMonoBehaviour
     {
         if (background != null) background.SetActive(state);
         if (tittle  != null) tittle.SetActive(state);
-        if (homeButton != null) homeButton.gameObject.SetActive(state);
+        if (okToRestartButton != null) okToRestartButton.gameObject.SetActive(state);
+        if (menuButton != null) menuButton.gameObject.SetActive(state);
+        if (scoreInGameOverUI != null) scoreInGameOverUI.SetActive(state);
     }
 
     protected virtual void LoadBackGround()
@@ -47,30 +52,46 @@ public class GameOverUICtrl : TienMonoBehaviour
         Debug.Log($"{transform.name}: LoadTittle", this);
     }
 
-    protected virtual void LoadHomeButton()
+    protected virtual void LoadOkToRestartButton()
     {
-        if (homeButton != null) return;
-        homeButton = transform.Find("HomeButton").GetComponent<Button>();
-        Debug.Log($"{transform.name}: LoadHomeButton", this);
+        if (okToRestartButton != null) return;
+        okToRestartButton = transform.Find("OkToRestartButton").GetComponent<Button>();
+        Debug.Log($"{transform.name}: LoadOkToRestartButton", this);
+    }
+
+    protected virtual void LoadMenuButton()
+    {
+        if (menuButton != null) return;
+        menuButton = transform.Find("MenuButton").GetComponent<Button>();
+        Debug.Log($"{transform.name}: LoadMenuButton", this);
+    }
+
+    protected virtual void LoadScoreInGameOverUI()
+    {
+        if (scoreInGameOverUI != null) return;
+        scoreInGameOverUI = transform.Find("ScoreInGameOverUI").gameObject;
+        Debug.Log($"{transform.name}: LoadScoreInGameOverUI", this);
     }
 
     private void OnEnable()
     {
-        homeButton.onClick.AddListener(OnHomeButtonClick);
+        okToRestartButton.onClick.AddListener(OnOkToRestartButtonClick);
+        menuButton.onClick.AddListener(OnMenuButtonClick);
     }
 
     private void OnDisable()
     {
-        homeButton.onClick.RemoveListener(OnHomeButtonClick);
+        okToRestartButton.onClick.RemoveAllListeners();
+        menuButton.onClick.RemoveAllListeners();
     }
 
-    protected virtual void OnRestartButtonClick()
+    protected virtual void OnOkToRestartButtonClick()
     {
         GameManager.Instance.RestartGame();
     }
 
-    protected virtual void OnHomeButtonClick()
+    protected virtual void OnMenuButtonClick()
     {
-        GameManager.Instance.BackToHome();
+        GameManager.Instance.BackToMenu();
     }
 }

@@ -1,4 +1,4 @@
-public class ScoreUICtrl : ScoreConvertToSprites
+public class ScoreIngameUICtrl : ScoreConvertToSprites
 {
     private void OnEnable()
     {

@@ -36,7 +36,7 @@ public class PipeSpawner : Spawner
         spawnPos.x = xPos;
         spawnPos.y = Random.Range(minY, maxY);
         int rate = Random.Range(0, 3); //test rating: 1/3
-        if (rate == 0) this.Spawn("PipeWithShield", spawnPos);
-        this.Spawn("Pipe", spawnPos);
+        if (rate == 0) Spawn("PipeWithShield", spawnPos);
+        else Spawn("Pipe", spawnPos);
     }
 }

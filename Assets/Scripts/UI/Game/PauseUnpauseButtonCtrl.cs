@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +19,6 @@ public class PauseUnpauseButtonCtrl : TienMonoBehaviour
 
     protected override void LoadComponents()
     {
-        base.LoadComponents();
         LoadPauseButtonIcon();
         LoadUnpauseButtonIcon();
         LoadPauseButton();
@@ -68,5 +66,10 @@ public class PauseUnpauseButtonCtrl : TienMonoBehaviour
         GameManager.Instance.TogglePause();
         if (Time.timeScale == 0f) pauseUnpauseButton.image.sprite = unpauseButtonIcon;
         else pauseUnpauseButton.image.sprite = pauseButtonIcon;
+    }
+
+    public virtual void HideSelf()
+    {
+        gameObject.SetActive(false);
     }
 }
